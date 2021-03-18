@@ -1,16 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Cheatsheet title="tmux" v-on:show-cheatsheet="show" />
+  <div v-if="showBody">
+    <Body />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Cheatsheet from './components/Cheatsheet'
+import Body from './components/Body'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Cheatsheet,
+    Body
+  },
+  data () {
+    return {
+      showBody: false
+    }
+  },
+  methods: {
+    show () {
+      this.showBody = !this.showBody
+    }
+  },
+  emits: ['show-cheatsheet']
 }
 </script>
 
